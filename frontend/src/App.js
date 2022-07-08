@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
-import "./App.css";
+import React, { useState, useEffect, useContext } from "react";
 import Header from "./components/Layout/header/Header.js";
 import WebFont from "webfontloader";
 import Footer from "./components/Layout/footer/Footer";
-import { ThemeProvider } from "@mui/styles";
-import { createTheme } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
+import { Theme } from "./theme/Theme";
+import Approutes from "./routes/Approutes";
+const App = () => {
+  const { isDarkTheme, lightTheme, DarkTheme } = useContext(Theme);
 
-function App() {
   React.useEffect(() => {
     WebFont.load({
       google: {
@@ -16,17 +16,13 @@ function App() {
     });
   }, []);
 
-  const theme = createTheme({});
-
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Header />
-
-        <Footer />
-      </BrowserRouter>
+    <ThemeProvider theme={isDarkTheme ? DarkTheme : lightTheme}>
+      <Header />
+      <Approutes />
+      <Footer />
     </ThemeProvider>
   );
-}
+};
 
 export default App;
