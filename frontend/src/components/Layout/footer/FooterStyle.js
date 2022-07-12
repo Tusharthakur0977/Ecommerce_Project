@@ -4,7 +4,7 @@ const useStyleFooter = makeStyles((theme) => ({
   mainCont: {
     display: "flex",
     flexDirection: "column",
-    background: "#181818",
+    background: theme.palette.mode === "dark" ? "#fdfdfd" : "#181818",
     gap: "10px",
     padding: "20px 40px",
     [theme.breakpoints.down("md")]: {
@@ -17,7 +17,9 @@ const useStyleFooter = makeStyles((theme) => ({
 
   subCont1: {
     display: "flex",
+    background: theme.palette.mode === "dark" ? "#181818" : "",
     justifyContent: "space-between",
+    padding: "0 10px",
     alignItems: "center",
     [theme.breakpoints.down("md")]: {
       padding: "0px",
@@ -32,6 +34,8 @@ const useStyleFooter = makeStyles((theme) => ({
 
   brandlogofoot: {
     flex: 0.5,
+    border: "2px solid",
+    borderColor: theme.palette.mode === "dark" ? "black" : "",
     borderStartStartRadius: "110px",
     borderBottomRightRadius: "110px",
     padding: "10px 70px",
@@ -44,16 +48,20 @@ const useStyleFooter = makeStyles((theme) => ({
   },
 
   subCont2: {
-    borderTop: "1px solid whitesmoke",
-    borderBottom: "1px solid whitesmoke",
+    borderTop: `1px solid ${
+      theme.palette.mode === "dark" ? "black" : "whitesmoke"
+    }`,
+    borderBottom: `1px solid ${
+      theme.palette.mode === "dark" ? "black" : "whitesmoke"
+    }`,
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
+    gap: "90px",
     alignItems: "flex-start",
     padding: "30px 20px",
     [theme.breakpoints.down("md")]: {
       flexWrap: "wrap",
       justifyContent: "space-evenly",
-
       gap: "12px",
     },
     [theme.breakpoints.down("sm")]: {
@@ -65,13 +73,16 @@ const useStyleFooter = makeStyles((theme) => ({
       justifyContent: "space-between",
     },
   },
+  footHeadings: {
+    color: theme.palette.mode === "dark" ? "#000" : "#fff",
+  },
   Links: {
-    color: "#92929C",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
     gap: "15px",
     alignItems: "center",
+    padding: "0 20px",
     [theme.breakpoints.down("md")]: {
       width: "45%",
     },
@@ -95,6 +106,7 @@ const useStyleFooter = makeStyles((theme) => ({
       justifyContent: "center",
       flexDirection: "row",
       display: "flex",
+      padding: "0 25px",
       gap: "15px",
       flexWrap: "wrap",
     },
@@ -105,14 +117,13 @@ const useStyleFooter = makeStyles((theme) => ({
     },
   },
   Items: {
-    color: "whitesmoke",
+    color: theme.palette.mode === "dark" ? "black" : "whitesmoke",
     textDecoration: "none",
     [theme.breakpoints.down("md")]: {
       padding: "15px 20px",
     },
   },
   aboutus: {
-    color: "whitesmoke",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -137,6 +148,7 @@ const useStyleFooter = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
+    color: theme.palette.mode === "dark" ? "black" : "whitesmoke",
     gap: "20px",
     [theme.breakpoints.down("md")]: {
       alignItems: "center",
@@ -148,8 +160,6 @@ const useStyleFooter = makeStyles((theme) => ({
     },
   },
   contactus: {
-    width: "20%",
-    color: "whitesmoke",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -171,6 +181,7 @@ const useStyleFooter = makeStyles((theme) => ({
 
   contactItems: {
     display: "flex",
+    color: theme.palette.mode === "dark" ? "black" : "whitesmoke",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
@@ -178,8 +189,6 @@ const useStyleFooter = makeStyles((theme) => ({
   },
 
   socialicons: {
-    width: "20%",
-    color: "whitesmoke",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -213,8 +222,9 @@ const useStyleFooter = makeStyles((theme) => ({
     },
   },
   subCont3: {
-    padding: "10px 0px 0 0",
+    padding: "10px 0px 10px 0",
     color: "white",
+    background: theme.palette.mode === "dark" ? "#181818" : "",
     textAlign: "center",
   },
 }));

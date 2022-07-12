@@ -6,6 +6,7 @@ import {
   ImageList,
   Link,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { Link as Route } from "react-router-dom";
 import Facebook from "@mui/icons-material/Facebook";
@@ -16,6 +17,7 @@ import useStyleFooter from "./FooterStyle";
 
 const Footer = () => {
   const classes = useStyleFooter();
+  const theme = useTheme();
   const socialmedia = [
     { link: "https://www.facebook.com/", icon: <Facebook /> },
     { link: "https://www.youtube.com/", icon: <YouTube /> },
@@ -35,7 +37,10 @@ const Footer = () => {
           <img src="../assets/images/brandlogo.png" alt="shopX" height="40px" />
         </Box>
         <Box className={classes.DwnlodStore}>
-          <Typography color={"#CCCCCC"} variant="h6">
+          <Typography
+            color={"whitesmoke"}
+            variant="h6"
+          >
             Download Our App
           </Typography>
           <ImageList>
@@ -54,13 +59,22 @@ const Footer = () => {
       </Box>
       <Box className={classes.subCont2}>
         <Box className={classes.Links}>
-          <Typography variant="h6" color={"#CCCCCC"} letterSpacing={4}>
+          <Typography
+            variant="h6"
+            className={classes.footHeadings}
+            letterSpacing={2}
+          >
             Links
           </Typography>
           <Box className={classes.linkItems}>
             {navLinks.map((links, index) => {
               return (
-                <Route key={index} to={links.path} className={classes.Items}>
+                <Route
+                  key={index}
+                  to={links.path}
+                  className={classes.Items}
+                  sx={{}}
+                >
                   {links.name}
                 </Route>
               );
@@ -68,7 +82,11 @@ const Footer = () => {
           </Box>
         </Box>
         <Box className={classes.aboutus}>
-          <Typography variant="h6" color={"#CCCCCC"} letterSpacing={4}>
+          <Typography
+            variant="h6"
+            className={classes.footHeadings}
+            letterSpacing={2}
+          >
             About Us
           </Typography>
           <Box className={classes.aboutItems}>
@@ -80,7 +98,11 @@ const Footer = () => {
           </Box>
         </Box>
         <Box className={classes.contactus}>
-          <Typography variant="h6" color={"#CCCCCC"} letterSpacing={4}>
+          <Typography
+            variant="h6"
+            className={classes.footHeadings}
+            letterSpacing={2}
+          >
             Contact Us
           </Typography>
           <Box className={classes.contactItems}>
@@ -92,7 +114,11 @@ const Footer = () => {
           </Box>
         </Box>
         <Box className={classes.socialicons}>
-          <Typography variant="h6" color={"#CCCCCC"} letterSpacing={3}>
+          <Typography
+            variant="h6"
+            className={classes.footHeadings}
+            letterSpacing={2}
+          >
             Social Handles
           </Typography>
           <Box className={classes.socialItems}>

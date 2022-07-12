@@ -11,7 +11,7 @@ const ThemeContextprovider = ({ children }) => {
         main: "#fdfdfd",
       },
       secondary: {
-        main: "#000",
+        main: "#fff",
       },
     },
   });
@@ -20,7 +20,10 @@ const ThemeContextprovider = ({ children }) => {
     palette: {
       mode: "dark",
       primary: {
-        main: "#fff",
+        main: "#0D0D0D",
+      },
+      secondary: {
+        main: "#00000",
       },
     },
   });

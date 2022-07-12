@@ -5,7 +5,11 @@ import RoutePath from "./RoutePath";
 const Approutes = () => {
   return (
     <Routes>
-      <Route path={RoutePath.home.path} element={RoutePath.home.component} />
+      <Route
+        exact
+        path={RoutePath.home.path}
+        element={RoutePath.home.component}
+      />
     </Routes>
   );
 };

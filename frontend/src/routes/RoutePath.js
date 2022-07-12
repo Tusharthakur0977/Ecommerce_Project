@@ -1,4 +1,4 @@
-import Home from "../components/Home";
+import Home from "../screens/Home/Home";
 
 const RoutePath = {
   home: {
