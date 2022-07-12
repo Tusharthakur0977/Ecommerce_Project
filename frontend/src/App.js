@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Layout/header/Header.js";
 import WebFont from "webfontloader";
@@ -7,10 +7,9 @@ import { ThemeProvider } from "@mui/material";
 import { Theme } from "./theme/Theme";
 import Approutes from "./routes/Approutes";
 import { Container } from "@mui/system";
+import { Context } from "./Context/Context";
 const App = () => {
   const { isDarkTheme, lightTheme, DarkTheme } = useContext(Theme);
-
-
   return (
     <ThemeProvider theme={isDarkTheme ? DarkTheme : lightTheme}>
       <Header />

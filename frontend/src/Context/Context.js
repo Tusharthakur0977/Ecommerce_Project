@@ -1,10 +1,14 @@
 import React, { createContext, useState } from "react";
-const Context = createContext();
+export const Context = createContext();
 
 const ContextProvider = ({ children }) => {
-  const [searchModel, setsearchModel] = useState(false);
+  const [searchModel, setSearchModel] = useState(false);
+  const [loginModel, setLoginModel] = useState(false);
+
   return (
-    <Context.Provider value={{ searchModel, setsearchModel }}>
+    <Context.Provider
+      value={{ searchModel, setSearchModel, loginModel, setLoginModel }}
+    >
       {children}
     </Context.Provider>
   );

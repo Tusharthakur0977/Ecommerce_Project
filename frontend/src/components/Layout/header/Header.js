@@ -15,9 +15,18 @@ import MenuItem from "@mui/material/MenuItem";
 import SearchIcon from "@mui/icons-material/Search";
 import { useStyleHeader } from "./HeaderStyle";
 import Darkmodebtn from "../../utilityComp/DarkModebtn/DarkModeBtn";
+import { Context } from "../../../Context/Context";
+import { useContext } from "react";
+import { useState } from "react";
 
 const Header = () => {
   const classes = useStyleHeader();
+  const [user, setUser] = useState(false);
+  const { loginModel, setLoginModel } = useContext(Context);
+
+  const handleLoginModel = () => {
+    setLoginModel(!loginModel);
+  };
   const navLinks = [
     { path: "/home", name: "Home" },
     { path: "", name: "About" },
@@ -124,56 +133,67 @@ const Header = () => {
                 size="large"
                 sx={{
                   mx: 4,
-                  flex: 1,
                   justifyContent: "flex-end",
-                  padding: "0",
                 }}
+                onClick={handleLoginModel}
               >
                 <SearchIcon />
                 {/* <Darkmodebtn /> */}
               </IconButton>
-              <Box sx={{ flex: 0 }}>
-                <Tooltip title="Profile settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
-                    />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: "45px" }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  {settingLinks.map((setting, index) => (
-                    <MenuItem key={index} onClick={handleCloseUserMenu}>
-                      <Button size="small" className={classes.navlinkBtn}>
-                        <Route
-                          className={classes.linkBtnItems}
-                          to={setting.path}
-                          sx={{
-                            color: "whitesmoke",
-                            textDecoration: "none",
-                          }}
-                        >
-                          {setting.name}
-                        </Route>
-                      </Button>
-                    </MenuItem>
-                  ))}
-                </Menu>
+              <Box>
+                {user ? (
+                  <>
+                    <Tooltip title="Profile settings">
+                      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        <Avatar
+                          alt="Remy Sharp"
+                          src="/static/images/avatar/2.jpg"
+                        />
+                      </IconButton>
+                    </Tooltip>
+                    <Menu
+                      sx={{ mt: "45px" }}
+                      id="menu-appbar"
+                      anchorEl={anchorElUser}
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      keepMounted
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      open={Boolean(anchorElUser)}
+                      onClose={handleCloseUserMenu}
+                    >
+                      {settingLinks.map((setting, index) => (
+                        <MenuItem key={index} onClick={handleCloseUserMenu}>
+                          <Button size="small" className={classes.navlinkBtn}>
+                            <Route
+                              className={classes.linkBtnItems}
+                              to={setting.path}
+                              sx={{
+                                color: "whitesmoke",
+                                textDecoration: "none",
+                              }}
+                            >
+                              {setting.name}
+                            </Route>
+                          </Button>
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </>
+                ) : (
+                  <Button
+                    variant="contained"
+                    color="info"
+                    onClick={handleLoginModel}
+                  >
+                    Log In
+                  </Button>
+                )}
               </Box>
             </Box>
           </Toolbar>

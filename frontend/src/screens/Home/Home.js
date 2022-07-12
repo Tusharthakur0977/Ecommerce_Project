@@ -1,23 +1,16 @@
 import { Container } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import "./Home.css";
 import { useStyleHome } from "./HomeStyle";
 import { motion } from "framer-motion";
-import Modal from "../../components/utilityComp/Modal/Modal";
+import SearchModal from "../../components/Modals/SearchModal";
 const Home = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-  const classes = useStyleHome();
   return (
     <>
       <Container maxWidth="xl" className="banner">
-
+        Home
       </Container>
+      <SearchModal />
     </>
   );
 };

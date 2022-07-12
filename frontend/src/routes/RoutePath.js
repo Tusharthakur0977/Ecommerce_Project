@@ -4,7 +4,7 @@ const RoutePath = {
   home: {
     title: "Home",
     component: <Home />,
-    path: "/home",
+    path: "/",
   },
 };
 
