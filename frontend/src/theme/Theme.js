@@ -9,9 +9,11 @@ const ThemeContextprovider = ({ children }) => {
       mode: "light",
       primary: {
         main: "#fdfdfd",
+        contrastText: "#fdfdfd",
       },
       secondary: {
-        main: "#fff",
+        main: "#000",
+        contrastText: "#fdfdfd",
       },
     },
   });

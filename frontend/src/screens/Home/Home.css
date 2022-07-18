@@ -10,7 +10,7 @@
   justify-content: center;
   color: white;
 }
-
+/* 
 .banner::after {
   content: "";
   width: 100vw;
@@ -21,4 +21,4 @@
   left: 0;
   clip-path: polygon(37% 87%, 73% 94%, 100% 100%, 0 100%, 13% 90%);
   max-width: 100%;
-}
+} */

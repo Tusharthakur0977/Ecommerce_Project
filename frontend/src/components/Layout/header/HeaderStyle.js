@@ -3,11 +3,17 @@ import { makeStyles } from "@mui/styles";
 export const useStyleHeader = makeStyles((theme) => ({
   toolBar: {
     flex: 1,
+    padding: "3px 15px",
     display: "flex",
     alignItems: "center",
+    justifyContent: "space-between",
     gap: "40px",
     [theme.breakpoints.down("md")]: {
       gap: "0px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "0px",
+      padding: "0px 10px",
     },
   },
   logoImg: {
