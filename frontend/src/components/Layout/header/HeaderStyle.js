@@ -57,7 +57,14 @@ export const useStyleHeader = makeStyles((theme) => ({
 
   linkBtnItems: {
     fontWeight: "bolder",
+    fontSize: "12px",
     color: theme.palette.mode === "dark" ? "whitesmoke" : "black",
     textDecoration: "none",
+    "&:hover": {
+      color: theme.palette.mode === "dark" ? "black" : "whitesmoke",
+      background:"black"
+    },
   },
+
+  
 }));

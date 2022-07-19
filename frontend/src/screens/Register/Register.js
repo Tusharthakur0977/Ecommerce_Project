@@ -127,7 +127,6 @@ const Register = () => {
                   placement="right"
                   arrow
                   open={tooltip}
-                  hov
                 >
                   <IconButton
                     size="large"

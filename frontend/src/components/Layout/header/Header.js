@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link as Route, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,9 +15,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useStyleHeader } from "./HeaderStyle";
 import { useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { ClickAwayListener } from "@mui/material";
+import { ClickAwayListener, useTheme } from "@mui/material";
 const Header = () => {
   const classes = useStyleHeader();
+  const theme = useTheme();
   const [user, setUser] = useState(false);
   const navigate = useNavigate();
   const handleLoginModel = () => {
@@ -120,17 +121,18 @@ const Header = () => {
           </Box>
           <Box className={classes.navlinks}>
             {navLinks.map((page, index) => (
-              <Button key={index} className={classes.navlinkBtn}>
-                <Route
-                  className={classes.linkBtnItems}
-                  to={page.path}
-                  sx={{
-                    color: "whitesmoke",
-                    textDecoration: "none",
-                  }}
-                >
-                  {page.name}
-                </Route>
+              <Button
+                key={index}
+                component={Link}
+                className={classes.navlinkBtn}
+                to={page.path}
+                sx={{
+                  fontWeight: "bold",
+                  color: "black",
+                  textDecoration: "none",
+                }}
+              >
+                {page.name}
               </Button>
             ))}
           </Box>
@@ -150,14 +152,41 @@ const Header = () => {
             <Tooltip title="Account settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 {user ? (
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/static/images/avatar/2.jpg"
+                    />
+                    <Typography variant="caption" color={"secondary"}>
+                      {user}
+                    </Typography>
+                  </Box>
                 ) : (
-                  <AccountCircleIcon fontSize="large" color="secondary" />
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    <AccountCircleIcon fontSize="large" color="secondary" />
+                    <Typography variant="caption" color={"secondary"}>
+                      Account
+                    </Typography>
+                  </Box>
                 )}
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px" }}
+              sx={{ mt: "55px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -174,34 +203,52 @@ const Header = () => {
             >
               {user
                 ? loggedINSetting.map((setting, index) => (
-                    <MenuItem key={index} onClick={handleCloseUserMenu}>
-                      <Button size="small" className={classes.navlinkBtn}>
-                        <Route
-                          className={classes.linkBtnItems}
-                          to={setting.path}
-                          sx={{
-                            color: "whitesmoke",
-                            textDecoration: "none",
-                          }}
-                        >
-                          {setting.name}
-                        </Route>
+                    <MenuItem
+                      sx={{ padding: "5px 10px" }}
+                      key={index}
+                      onClick={handleCloseUserMenu}
+                    >
+                      <Button
+                        sx={{
+                          color: "black",
+                          "&:hover": {
+                            color:
+                              theme.palette.mode === "dark"
+                                ? "black"
+                                : "whitesmoke",
+                            background: "black",
+                          },
+                        }}
+                        component={Link}
+                        className={classes.proflieItems}
+                        to={setting.path}
+                      >
+                        {setting.name}
                       </Button>
                     </MenuItem>
                   ))
                 : LoggedOutSetting.map((setting, index) => (
-                    <MenuItem key={index} onClick={handleCloseUserMenu}>
-                      <Button size="small" className={classes.navlinkBtn}>
-                        <Route
-                          className={classes.linkBtnItems}
-                          to={setting.path}
-                          sx={{
-                            color: "whitesmoke",
-                            textDecoration: "none",
-                          }}
-                        >
-                          {setting.name}
-                        </Route>
+                    <MenuItem
+                      sx={{ padding: "5px 10px" }}
+                      key={index}
+                      onClick={handleCloseUserMenu}
+                    >
+                      <Button
+                        sx={{
+                          color: "black",
+                          "&:hover": {
+                            color:
+                              theme.palette.mode === "dark"
+                                ? "black"
+                                : "whitesmoke",
+                            background: "black",
+                          },
+                        }}
+                        component={Link}
+                        className={classes.proflieItems}
+                        to={setting.path}
+                      >
+                        {setting.name}
                       </Button>
                     </MenuItem>
                   ))}

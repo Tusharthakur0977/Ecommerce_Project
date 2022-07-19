@@ -11,7 +11,18 @@ const App = () => {
   return (
     <ThemeProvider theme={isDarkTheme ? DarkTheme : lightTheme}>
       <Header />
-      <Container disableGutters maxWidth="xl" sx={{ padding: "0px" }}>
+      <Container
+        sx={{
+          height: "auto",
+          padding: "0px 0px",
+          backgroundImage:
+            "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),url(../assets/images/bg1.jpg)",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+        disableGutters
+        maxWidth="xl"
+      >
         <Approutes />
       </Container>
       <Footer />
